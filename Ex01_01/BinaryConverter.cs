@@ -5,8 +5,9 @@ namespace Ex01_01
 {
     class BinaryConverter
     {
-
-        public void RunBinary()
+        //The function that operates the entire task requirements: user input, converting + printing the user input
+        //and printing the required statistics.
+        public static void RunBinary()
         {
             string binaryNumber1Str = getSingleStringNumberFromUser(1);
             string binaryNumber2Str = getSingleStringNumberFromUser(2);
@@ -18,16 +19,17 @@ namespace Ex01_01
 
             printDescendingOrder(decimalNumber1, decimalNumber2, decimalNumber3);
 
+            Console.WriteLine();
             Console.WriteLine("Statistics");
             Console.WriteLine("----------------");
-            calculateAvergaeOfZerosAndOnes(binaryNumber1Str, binaryNumber2Str, binaryNumber3Str);
+            printAverageOfZerosAndOnes(binaryNumber1Str, binaryNumber2Str, binaryNumber3Str);
             printQuantityOfDividedByFour(decimalNumber1, decimalNumber2, decimalNumber3);
             printQuantityOfDescendingOrderNumbers(decimalNumber1, decimalNumber2, decimalNumber3);
             printQuantityOfPalindromeNumbers(decimalNumber1, decimalNumber2, decimalNumber3);
         }
 
-
-        private void printDescendingOrder(int i_binaryNumber1, int i_binaryNumber2, int i_binaryNumber3)
+        //Prints out the given input params in descending order.
+        private static void printDescendingOrder(int i_binaryNumber1, int i_binaryNumber2, int i_binaryNumber3)
         {
             Console.WriteLine("Descending order: ");
             if (i_binaryNumber1 > i_binaryNumber2 && i_binaryNumber1 > i_binaryNumber3)
@@ -65,7 +67,8 @@ namespace Ex01_01
             }
         }
 
-        private void calculateAvergaeOfZerosAndOnes(string i_binaryNumber1Str, string i_binaryNumber2Str, string i_binaryNumber3Str)
+        //Calculates the average of the quantity of zeros in the 3 binary number strings
+        private static float calculateAvergaeOfZeros(string i_binaryNumber1Str, string i_binaryNumber2Str, string i_binaryNumber3Str)
         {
             int totalNumberOfZeros = 0;
             
@@ -79,19 +82,27 @@ namespace Ex01_01
                 }
             }
 
-            float avgOfZeros = (float)totalNumberOfZeros / (float)collectiveBinaryNumber.Length;
+            return (float)totalNumberOfZeros / (float)collectiveBinaryNumber.Length;
+        }
+
+        //Prints out the average of zeros and ones in the 3 binary number strings
+        private static void printAverageOfZerosAndOnes(string i_binaryNumber1Str, string i_binaryNumber2Str, string i_binaryNumber3Str)
+        {
+            float avgOfZeros = calculateAvergaeOfZeros(i_binaryNumber1Str, i_binaryNumber2Str, i_binaryNumber3Str);
             float avgOfOnes = 1 - avgOfZeros;
             Console.WriteLine("Average number of zeroes: " + avgOfZeros);
             Console.WriteLine("Average number of ones: " + avgOfOnes);
         }
 
-        private void printQuantityOfDividedByFour(int i_decimalNumber1, int i_decimalNumber2, int i_decimalNumber3)
+        //Prints out the quantity of given decimal numbers divisable by 4 
+        private static void printQuantityOfDividedByFour(int i_decimalNumber1, int i_decimalNumber2, int i_decimalNumber3)
         {
             int quantityOfNumbersDisivisableByFour = isDivdedByFour(i_decimalNumber1) + isDivdedByFour(i_decimalNumber2) + isDivdedByFour(i_decimalNumber3);
             Console.WriteLine("Quantity of numbers divisable by four: " + quantityOfNumbersDisivisableByFour);
         }
 
-        private int isDivdedByFour(int i_decimalNumber)
+        //Returns 1 if the number is divisable by 4 and 0 if not
+        private static int isDivdedByFour(int i_decimalNumber)
         {
             if(i_decimalNumber % 4 == 0)
             {
@@ -103,7 +114,8 @@ namespace Ex01_01
             }
         }
 
-        private int isDescendingOrederNumber(int i_decimalNumber)
+        //Returns 1 if the given decimal number is a descending order number, otherwise returns 0
+        private static int isDescendingOrederNumber(int i_decimalNumber)
         {
             int currentComparingNumber = i_decimalNumber % 10;
 
@@ -119,13 +131,15 @@ namespace Ex01_01
             return 1;
         }
 
-        private void printQuantityOfDescendingOrderNumbers(int i_decimalNumber1, int i_decimalNumber2, int i_decimalNumber3)
+        //Prints out the quantity of given decimal numbers that are descending order numbers
+        private static void printQuantityOfDescendingOrderNumbers(int i_decimalNumber1, int i_decimalNumber2, int i_decimalNumber3)
         {
             int quantityOfDescendingOrderNumbers = isDescendingOrederNumber(i_decimalNumber1) + isDescendingOrederNumber(i_decimalNumber2) + isDescendingOrederNumber(i_decimalNumber3);
             Console.WriteLine("Quntity of descending order numbers: " + quantityOfDescendingOrderNumbers);
         }
-
-        private int isPalindrome(int i_decimalNumber)
+        
+        //Returns 1 if the given decimal number is a palindrome, otherwise returns 0
+        private static int isPalindrome(int i_decimalNumber)
         {
             int reverseNumber = 0;
             int remainder = 0;
@@ -143,17 +157,19 @@ namespace Ex01_01
             return 0;
         }
 
-        private void printQuantityOfPalindromeNumbers(int i_decimalNumber1, int i_decimalNumber2, int i_decimalNumber3)
+        //Prints out the quantity of given decimal numbers divided by 4 
+        private static void printQuantityOfPalindromeNumbers(int i_decimalNumber1, int i_decimalNumber2, int i_decimalNumber3)
         {
             int quantityOfPalindromeNumbers = isPalindrome(i_decimalNumber1) + isPalindrome(i_decimalNumber2) + isPalindrome(i_decimalNumber3);
             Console.WriteLine("Quantity of palindrome numbers: " + quantityOfPalindromeNumbers);
         }
 
-        private void printNumberOrderByFormat(int i_BiggestNumber, int i_MiddleNumber, int i_SmallestNumber)
+        //Prints out the given numbers from biggest to smallest according to the format.
+        private static void printNumberOrderByFormat(int i_BiggestNumber, int i_MiddleNumber, int i_SmallestNumber)
         {
             Console.WriteLine(i_BiggestNumber + "," + i_MiddleNumber + "," + i_SmallestNumber);
         }
-        private bool validateUserInput(string i_UserInput)
+        private static bool validateUserInput(string i_UserInput)
         {
             int userInputLength = i_UserInput.Length;
             if (userInputLength == 8)
@@ -170,7 +186,8 @@ namespace Ex01_01
             return false;
         }
 
-        private string getSingleStringNumberFromUser(int i_NumberIndex)
+        //Asks the user to write a byte and validates that it is in fact, a byte
+        private static string getSingleStringNumberFromUser(int i_NumberIndex)
         {
             Console.WriteLine("Please enter binary number #" + i_NumberIndex + ": ");
             string binaryNumberStr = Console.ReadLine();
@@ -183,7 +200,8 @@ namespace Ex01_01
             return binaryNumberStr;
         }
 
-        private int converBinaryToDecimal(string i_BinaryStringNumber)
+        //Converts the given byte string to a decimal number
+        private static int converBinaryToDecimal(string i_BinaryStringNumber)
         {
             double r_DecimalNumber = 0;
             int binaryNumberLength = i_BinaryStringNumber.Length;
