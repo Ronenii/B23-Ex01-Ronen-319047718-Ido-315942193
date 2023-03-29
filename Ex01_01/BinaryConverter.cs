@@ -110,7 +110,6 @@ namespace Ex01_01
             {
                 return 1;
             }
-
             else
             {
                 return 0;
