@@ -18,6 +18,7 @@ namespace Ex01_04
             string userInputString = getUserInput();
             Console.WriteLine();
 
+            printIfPalindrome(userInputString);
             if (isNumber(userInputString))
             {
                 printDivisibleByThree(userInputString);
@@ -58,13 +59,13 @@ namespace Ex01_04
             return true;
         }
 
-        //Returns true if the string is 6 chars long and is either a number or a collection of letters
+        // Returns true if the string is 6 chars long and is either a number or a collection of letters
         private static bool isValidString(string i_UserInputString)
         {
             return (i_UserInputString.Length == 6) && xor(isEnglishLetterStr(i_UserInputString), isNumber(i_UserInputString));
         }
 
-        //Xor comparing function based on 2 given bools.
+        // Xor comparing function based on 2 given bools.
         private static bool xor(bool i_Val1, bool i_Val2)
         {
             return (!i_Val1 && i_Val2) || (i_Val1 && !i_Val2);
@@ -86,6 +87,36 @@ namespace Ex01_04
             return retUserString;
         }
 
+        public static bool isPalindrome(string i_UserInputString)
+        {
+            int strLength = i_UserInputString.Length;
+            if (strLength == 1 || strLength == 0)
+            {
+                return true;
+            }
+            else if (i_UserInputString[0] != i_UserInputString[strLength - 1])
+            {
+                return false;
+            }
+            else
+            {
+                return isPalindrome(i_UserInputString.Substring(1, strLength - 2));
+            }
+        }
+
+        public static void printIfPalindrome(string i_UserInputString)
+        {
+            string stateStr = string.Empty;
+
+            if (!isPalindrome(i_UserInputString))
+            {
+                stateStr = "n't";
+            }
+
+            string output = string.Format("The string \"{0}\" is{1} a palindrome.", i_UserInputString, stateStr);
+            Console.WriteLine(output);
+        }
+
         // Returns true of the number is divisible by 3.
         // Otherwise returns false.
         private static bool isDivisibleByThree(string i_UserInputString)
@@ -100,10 +131,11 @@ namespace Ex01_04
 
             if (!isDivisibleByThree(i_UserInputString))
             {
-                stateStr = "not";
+                stateStr = "n't";
             }
 
-            Console.WriteLine("The number {0} is {1}divisible by 3.", i_UserInputString, stateStr);
+            string output = string.Format("The number {0} is{1} divisible by 3.", i_UserInputString, stateStr);
+            Console.WriteLine(output);
         }
 
         // Returns the number of uppercase letters in the given str.
@@ -128,12 +160,17 @@ namespace Ex01_04
         {
             int numOfUppercase = findNumOfUppercaseLettersInStr(i_UserInputString);
             string pluralChar = string.Empty;
-            if(numOfUppercase != 1)
+            if (numOfUppercase != 1)
             {
                 pluralChar = "s";
             }
 
-            Console.WriteLine("The string {0} contains {1} uppercase letter{2}.", i_UserInputString, numOfUppercase, pluralChar);
+            string output = string.Format(
+                "The string {0} contains {1} uppercase letter{2}.",
+                i_UserInputString,
+                numOfUppercase,
+                pluralChar);
+            Console.WriteLine(output);
         }
     }
 }
