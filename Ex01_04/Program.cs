@@ -33,15 +33,8 @@ namespace Ex01_04
         // Otherwise returns false.
         private static bool isNumber(string i_UserInputString)
         {
-            for (int i = 0; i < i_UserInputString.Length; i++)
-            {
-                if (!char.IsDigit(i_UserInputString[i]))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            bool retIsNumber = int.TryParse(i_UserInputString, out int temp);
+            return retIsNumber;
         }
 
         // Returns true if the given str is a collection of letters
