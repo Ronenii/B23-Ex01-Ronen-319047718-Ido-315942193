@@ -10,6 +10,7 @@ namespace Ex01_02
             PrintDiamond(k_RowsAmount);
             Console.Read();
         }
+
         /// <summary>
         /// The recursive function for printing a diamond shape
         /// </summary>
@@ -18,6 +19,7 @@ namespace Ex01_02
         {
             printDiamondWrapper(i_NumberOfRows, 0);
         }
+
         /// <summary>
         /// The wrapper recursive method for print the diamond shape by the given format
         /// </summary>
@@ -38,6 +40,7 @@ namespace Ex01_02
             starsAmount -= 2;
             printShapeLine(numberOfSpaces, starsAmount);
         }
+
         /// <summary>
         /// Calculate how many stars we should print
         /// </summary>
@@ -45,8 +48,9 @@ namespace Ex01_02
         /// <returns></returns>
         private static int calculateAmountOfStars(int i_WorkingLine)
         {
-            return i_WorkingLine * 2 + 1;
+            return (i_WorkingLine * 2) + 1;
         }
+
         /// <summary>
         /// Print the format of the shape.
         /// </summary>
@@ -54,11 +58,17 @@ namespace Ex01_02
         /// <param name="i_StarsAmount">The amount of stars in the given row</param>
         private static void printShapeLine(int i_NumberOfSpaces, int i_StarsAmount)
         {
-            for (int i = 0; i < i_NumberOfSpaces; i++)
+            for(int i = 0; i < i_NumberOfSpaces; i++)
+            {
                 Console.Write(" ");
-            for (int i = 0; i < i_StarsAmount; i++)
+            }
+
+            for(int i = 0; i < i_StarsAmount; i++)
+            {
                 Console.Write("*");
-            Console.WriteLine("");
+            }
+
+            Console.WriteLine();
         }
     }
 }

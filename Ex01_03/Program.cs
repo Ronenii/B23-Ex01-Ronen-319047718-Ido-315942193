@@ -9,6 +9,7 @@ namespace Ex01_03
             RunExpertDiamond();
             Console.Read();
         }
+
         /// <summary>
         /// The main process of the exercise, print a diamond with user input size
         /// by using PrintDiamond from the other project using his assembly. 
@@ -25,6 +26,7 @@ namespace Ex01_03
             }
             Ex01_02.Program.PrintDiamond(parsedIntegerInput);
         }
+
         /// <summary>
         /// validate the user input, in addition we send as out param the parsed user input.
         /// </summary>
