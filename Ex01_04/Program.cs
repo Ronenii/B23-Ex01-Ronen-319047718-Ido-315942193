@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace Ex01_04
 {
@@ -16,7 +15,6 @@ namespace Ex01_04
         public static void RunStringCheck()
         {
             string userInputString = getUserInput();
-            Console.WriteLine();
 
             printIfPalindrome(userInputString);
             if (isNumber(userInputString))
@@ -97,7 +95,7 @@ namespace Ex01_04
             }
         }
 
-        public static void printIfPalindrome(string i_UserInputString)
+        private static void printIfPalindrome(string i_UserInputString)
         {
             string stateStr = string.Empty;
 

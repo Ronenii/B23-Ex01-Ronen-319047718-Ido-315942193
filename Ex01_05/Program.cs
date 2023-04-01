@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace Ex01_05
 {
@@ -62,18 +61,21 @@ namespace Ex01_05
         private static int getNumOfDigitsLargerThanLastDigit(string i_UserInputString)
         {
             int lastDigitIndex = i_UserInputString.Length - 1;
-            int lastDigit = int.Parse(i_UserInputString[lastDigitIndex].ToString());
-            int retLargerThanLastDig = 0;
+            int parsedNumber = int.Parse(i_UserInputString);
+            int lastDigit = parsedNumber % 10;
+            int largerThanLastDig = 0;
 
-            for (int i = 0; i < lastDigitIndex; i++)
+            while (parsedNumber != 0)
             {
-                if (int.Parse(i_UserInputString[i].ToString()) > lastDigit)
+                parsedNumber /= 10;
+                if (parsedNumber % 10 > lastDigit)
                 {
-                    retLargerThanLastDig++;
+                    largerThanLastDig++;
                 }
+
             }
 
-            return retLargerThanLastDig;
+            return largerThanLastDig;
         }
 
         // Returns the smallest digit in the given string.
