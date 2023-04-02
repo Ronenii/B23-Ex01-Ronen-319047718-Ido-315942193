@@ -72,7 +72,6 @@ namespace Ex01_05
                 {
                     largerThanLastDig++;
                 }
-
             }
 
             return largerThanLastDig;
