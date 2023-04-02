@@ -28,6 +28,7 @@ namespace Ex01_01
             printStats(binaryNumber1Str, binaryNumber2Str, binaryNumber3Str, decimalNumber1, decimalNumber2, decimalNumber3);
         }
 
+        // Printing the relevant statistics 
         private static void printStats(string i_BinaryNumber1Str, string i_BinaryNumber2Str, string i_BinaryNumber3Str, int i_DecimalNumber1, int i_DecimalNumber2, int i_DecimalNumber3)
         {
             float avgOfZeros = calculateAverageOfZeros(i_BinaryNumber1Str, i_BinaryNumber2Str, i_BinaryNumber3Str);
